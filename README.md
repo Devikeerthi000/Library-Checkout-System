@@ -1,22 +1,24 @@
-# Library-Checkout-System
-A web-based Library Checkout System built using Python, HTML, CSS, and SQL to manage end-to-end library operations like book borrowing, returns, inventory management, and fine calculation. Designed for students and librarians, this system provides a clean user interface with secure login and role-based access.
+#Library Checkout System
+An elegant, web-based application engineered with Python (Flask), HTML, CSS, and SQL to streamline the complete spectrum of library operations — from book circulation and returns to inventory oversight and fine computation.
+Crafted with both students and librarians in mind, the system features secure authentication and role-specific dashboards, ensuring a seamless, intuitive user experience.
 
-Features
+✨ Key Capabilities
+🔐 Role-Based Authentication – Distinct, secure access for Librarians and Students.
 
--User authentication with role-based access (Librarian vs. Student)
+📚 Comprehensive Book Management – Search, issue, return, and monitor due dates with ease.
 
--Book search, borrow, return, and due date tracking
+💰 Automated Fine Assessment – Intelligent calculation of late-return penalties.
 
--Fine calculation for late returns
+🗄 Robust Data Persistence – SQL-powered storage of user credentials, book records, and transaction history.
 
--SQL database integration for storing user and book data
+🎨 Refined User Interface – Clean, responsive design for optimal usability.
 
--Clean web interface using HTML and CSS
-
-Tech Stack
-
+🛠 Technology Stack
 Frontend: HTML, CSS
 
 Backend: Python (Flask)
 
 Database: SQL
+
+📖 Overview
+The Library Checkout System redefines library management by automating routine tasks, preserving data integrity, and presenting information in an accessible manner. It reduces administrative overhead, accelerates book transactions, and ensures overdue penalties are computed without manual intervention.
