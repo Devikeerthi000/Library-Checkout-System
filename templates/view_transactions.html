@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Transactions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .transaction-entry {
+            background-color: #fff;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .transaction-entry:hover {
+            background-color: #f1f1f1;
+        }
+        .transaction-header {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .transaction-details {
+            font-size: 16px;
+            color: #34495e;
+        }
+        .transaction-details p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>Transaction List</h2>
+
+    {% for transaction in transactions %}
+    <div class="transaction-entry">
+        <div class="transaction-header">
+            Transaction ID: {{ transaction['transaction_id'] }} | User ID: {{ transaction['user_id'] }} | Book ID: {{ transaction['books_id'] }}
+        </div>
+        <div class="transaction-details">
+            <p><strong>Checkout Date:</strong> {{ transaction['checkout_date'] }}</p>
+            <p><strong>Return Date:</strong> {{ transaction['return_date'] }}</p>
+            <p><strong>Status:</strong> {{ transaction['status'] }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</body>
+</html>

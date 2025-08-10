@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ecf0f1;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-image: url('your-background-image.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Header Styles */
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-top: 30px;
+            font-size: 2.5em;
+            font-weight: 600;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            width: 80%;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 25px;
+            background-color: rgba(255, 255, 255, 0.9); /* Transparent white */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .profile-section:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Profile Picture */
+        .profile-image {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-image img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #2c3e50;
+        }
+
+        /* Profile Info */
+        .profile-info p {
+            font-size: 1.2em;
+            margin: 15px 0;
+            color: #555;
+        }
+
+        .profile-info strong {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: white;
+            font-size: 1.1em;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        td:last-child {
+            text-align: center;
+        }
+
+        tr:hover {
+            background-color: #ecf0f1;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Logout Button */
+        a {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #2c3e50;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin-top: 25px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        a:hover {
+            background-color: #1abc9c;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .profile-section {
+                width: 90%;
+                padding: 20px;
+            }
+
+            table {
+                font-size: 1em;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+
+        /* Section Titles */
+        h2 {
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Card Styling for Profile Sections */
+        .profile-section,
+        .profile-section table {
+            background-color: white;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Adjusting the logout button */
+        .logout-link {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>User Profile</h1>
+
+    <div class="profile-section">
+       <!-- Profile Image -->
+       <div class="profile-image">
+            <img src="{{ url_for('static', filename='images/' + user['profile_image_url']) }}" alt="Profile Picture">
+    </div>
+
+
+        <!-- Profile Information -->
+        <div class="profile-info">
+            <p><strong>User ID:</strong> {{ user['user_id'] }}</p>
+            <p><strong>Name:</strong> {{ user['name'] }}</p>
+            <p><strong>Email:</strong> {{ user['email'] }}</p>
+            <p><strong>Membership Date:</strong> {{ user['membership_date'] }}</p>
+            <p><strong>Status:</strong> {{ user['status'] }}</p>
+            <p><strong>Phone Number:</strong> {{ user['phone_number'] }}</p>
+            <p><strong>Username:</strong> {{ user['username'] }}</p>
+        </div>
+    </div>
+
+    <!-- Displaying Checkouts -->
+    <div class="profile-section">
+        <h2>Your Checkouts:</h2>
+        <table>
+            <tr>
+                <th>Book Title</th>
+                <th>Category</th>
+                <th>Checkout Date</th>
+                <th>Return Date</th>
+            </tr>
+            {% for checkout in checkouts %}
+            <tr>
+                <td>{{ checkout['book_title'] }}</td>
+                <td>{{ checkout['category_name'] }}</td>
+                <td>{{ checkout['checkout_date'] }}</td>
+                <td>{{ checkout['return_date'] }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4">No checkouts found.</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <!-- Displaying Fines -->
+    <div class="profile-section">
+        <h2>Your Fines:</h2>
+        <table>
+            <tr>
+                <th>Fine ID</th>
+                <th>Checkout ID</th>
+                <th>Fine Amount</th>
+                <th>Paid</th>
+            </tr>
+            {% for fine in fines %}
+            <tr>
+                <td>{{ fine['fine_id'] }}</td>
+                <td>{{ fine['checkout_id'] }}</td>
+                <td>{{ fine['fine_amount'] }}</td>
+                <td>{{ 'Yes' if fine['paid'] else 'No' }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4">No fines found.</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <!-- Logout Button -->
+    <div class="logout-link">
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+
+</body>
+</html>

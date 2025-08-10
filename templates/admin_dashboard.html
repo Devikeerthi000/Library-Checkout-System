@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-image: url("{{ url_for('static', filename='images/library picc.jpg') }}"); /* Background image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh; /* Full viewport height */
+        }
+        h1 {
+            background-color: rgba(44, 62, 80, 0.8); /* Semi-transparent background for contrast */
+            color: white;
+            padding: 20px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 20px 0;
+            background-color: rgba(44, 62, 80, 0.9); /* Dark background for the navigation bar */
+            margin-top: 20px;
+            border-radius: 8px;
+            display: inline-block; /* Centers the navigation bar */
+        }
+        nav ul li {
+            display: inline-block;
+            margin: 10px 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white; /* White text color */
+            font-size: 20px; /* Increased font size */
+            font-weight: bold; /* Make the text bold */
+            padding: 10px 20px; /* Add padding around the links */
+            border-radius: 5px; /* Rounded corners for the buttons */
+            transition: background-color 0.3s ease; /* Smooth transition effect */
+        }
+        nav ul li a:hover {
+            background-color: #f39c12; /* Orange color when hovered */
+            color: white; /* Ensure text stays white on hover */
+        }
+        nav ul li a:active {
+            background-color: #e67e22; /* Slightly darker orange when active */
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome, Admin!</h1>
+    <nav>
+        <ul>
+            <li><a href="/view_users">Manage Users</a></li>
+            <li><a href="/view_transactions">Manage Transactions</a></li>
+            <li><a href="/view_logs">View Logs</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

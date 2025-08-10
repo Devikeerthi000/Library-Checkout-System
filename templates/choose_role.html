@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Role</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-image: url("{{ url_for('static', filename='images/library picc.jpg') }}"); /* Correct URL for image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex; /* Enable flexbox */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full height of the viewport */
+        }
+        
+        h1 {
+            text-align: center;
+            color:black; /* Adjust text color for contrast with background */
+            position: absolute; /* Position header above form */
+            top: 20px; /* Space from top */
+            width: 100%; /* Take full width */
+        }
+
+        .role-selection {
+            padding: 20px;
+            border: 2px solid #333;
+            background-color: rgba(255, 255, 255, 0.8); /* Slight transparency for better visibility */
+            border-radius: 8px;
+            text-align: center; /* Center text inside */
+        }
+
+        .role-selection button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            border: none; /* Remove border for button */
+            background-color: #2c3e50; /* Add a nice button color */
+            color:white; /* White text color */
+            border-radius: 5px;
+        }
+
+        .role-selection button:hover {
+            background-color: #2c3e50; /* Darker shade on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Choose Your Role</h1>
+    <div class="role-selection">
+        <form action="/choose_role" method="POST">
+            <button type="submit" name="role" value="user">Login as User</button>
+            <button type="submit" name="role" value="admin">Login as Admin</button>
+        </form>
+    </div>
+</body>
+</html>

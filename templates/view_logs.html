@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Logs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .log-entry {
+            background-color: #fff;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .log-entry:hover {
+            background-color: #f1f1f1;
+        }
+        .log-header {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .log-details {
+            font-size: 16px;
+            color: #34495e;
+        }
+    </style>
+</head>
+<body>
+    <h2>Admin Activity Logs</h2>
+
+    {% for log in logs %}
+    <div class="log-entry">
+        <div class="log-header">Log ID: {{ log['log_id'] }} | Admin ID: {{ log['admin_id'] }}</div>
+        <div class="log-details">
+            <p><strong>Action:</strong> {{ log['action'] }}</p>
+            <p><strong>Date:</strong> {{ log['timestamp'] }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</body>
+</html>
